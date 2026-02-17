@@ -1,9 +1,12 @@
+import ColorSelector from "./ColorSelector";
 import FilterSection from "./FilterSection";
+import PriceRange from "./PriceRange";
+import SizeSelector from "./SizeSelector";
 
 const FilterSidebar = () => {
   return (
-    <div>
-      <div className="flex justify-between pt-1.5">
+    <div className="pt-5">
+      <div className="flex justify-between">
         <div className="text-base lg:text-lg">Filter: </div>
         <div className="text-[#ff454c] underline underline-offset-4 cursor-pointer text-sm capitalize lg:text-base">
           reset all
@@ -50,6 +53,12 @@ const FilterSidebar = () => {
           { label: "Kente Wear", count: 353 },
         ]}
       />
+      {/* Sizes */}
+      <SizeSelector />
+      {/* colors */}
+      <ColorSelector />
+      {/* price */}
+      <PriceRange />
     </div>
   );
 };
