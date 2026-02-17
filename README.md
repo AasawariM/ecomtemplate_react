@@ -1,11 +1,39 @@
-## E-commerce Website
+# E-commerce Website
 
-# Tech Stack
+## Tech Stack
 
-- React js
-- Tailwind css
+- React.js
+- Tailwind CSS
 - Vite
 
-# components
+## Components
 
--Responsive Navbar Component
+### Responsive Navbar Component
+
+A React navbar component with a logo, search bar, and action icons.
+
+### Filter Sidebar Component
+
+A React sidebar component for filtering items with multiple sections. Each section displays a title, checkboxes, and counts.
+
+#### Components
+
+**FilterSidebar**
+
+- Wrapper component for all filter sections.
+- Renders multiple `FilterSection` components:
+  - Department
+  - Category
+  - Tshirt Type
+  - Cloth Type
+
+**FilterSection**
+
+- Accepts props:
+  - `title` – Section title
+  - `options` – Array of objects with `{ label, count }`
+
+- Renders:
+  - Section title
+  - Checkboxes for each option with count
+  - Divider line after options
