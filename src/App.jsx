@@ -1,6 +1,7 @@
 import "./App.css";
 import FilterSection from "./components/filters/FilterSection";
 import FilterSidebar from "./components/filters/FilterSidebar";
+import SizeSelector from "./components/filters/SizeSelector";
 import Navbar from "./components/Navbar";
 // import new_arrival from "./assets/new_arrival_img.DaCcndrq.svg";
 function App() {
@@ -12,39 +13,10 @@ function App() {
         {/* filter sidebar */}
         <div className="hidden lg:block">
           <div className="w-full px-4 lg:px-10">
+            {/* Sections */}
             <FilterSidebar />
             {/* Sizes */}
-            <div className="space-y-2">
-              <div className="text-base lg:text-lg mb-2">Size:</div>
-              <div className="flex flex-wrap">
-                <div className="p-2 sm:w-1/4 lg:w-1/4">
-                  <div className="hover:bg-gray-100 border text-center p-2 text-sm lg:text-lg cursor-pointer ">
-                    S
-                  </div>
-                </div>
-                <div className="p-2 sm:w-1/4 lg:w-1/4">
-                  <div className="hover:bg-gray-100 border text-center p-2 text-sm lg:text-lg cursor-pointer ">
-                    M
-                  </div>
-                </div>
-                <div className="p-2 sm:w-1/4 lg:w-1/4">
-                  <div className="hover:bg-gray-100 border text-center p-2 text-sm lg:text-lg cursor-pointer ">
-                    L
-                  </div>
-                </div>
-                <div className="p-2 sm:w-1/4 lg:w-1/4">
-                  <div className="hover:bg-gray-100 border text-center p-2 text-sm lg:text-lg cursor-pointer ">
-                    XL
-                  </div>
-                </div>
-                <div className="p-2 sm:w-1/4 lg:w-1/4">
-                  <div className="hover:bg-gray-100 border text-center p-2 text-sm lg:text-lg cursor-pointer ">
-                    XXL
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="my-3 border-t border-[#D9D9D9]"></div>
+            <SizeSelector />
             {/* colors */}
             <div className="space-y-2">
               <div className="text-base lg:text-lg mb-2">Color:</div>
