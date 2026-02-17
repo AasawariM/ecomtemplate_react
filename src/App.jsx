@@ -5,6 +5,7 @@ import FilterSidebar from "./components/filters/FilterSidebar";
 import PriceRange from "./components/filters/PriceRange";
 import SizeSelector from "./components/filters/SizeSelector";
 import Navbar from "./components/Navbar";
+import ProductSection from "./components/products/ProductSection";
 // import new_arrival from "./assets/new_arrival_img.DaCcndrq.svg";
 function App() {
   return (
@@ -15,14 +16,12 @@ function App() {
         {/* filter sidebar */}
         <div className="hidden lg:block">
           <div className="w-full px-4 lg:px-10">
-            {/* Sections */}
+            {/* filter Sections */}
             <FilterSidebar />
           </div>
         </div>
-        {/* new arrival products */}
-        <div className="flex-1 min-w-0">
-          <h1>New Arrival</h1>
-        </div>
+        {/* products section */}
+        <ProductSection />
       </div>
     </div>
   );
