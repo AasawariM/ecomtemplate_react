@@ -46,7 +46,7 @@ const Navbar = () => {
         />
       </div>
       <div className="border-t border-gray-300"></div>
-      <div className="flex justify-center my-8 lg:my-16 px-1.5">
+      <div className="flex justify-center my-8 lg:my-15 px-1.5">
         <div className="w-full">
           <img
             alt="New Arrivals"
