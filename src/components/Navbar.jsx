@@ -1,5 +1,6 @@
 import { Search, Heart, UserRound, ShoppingCart } from "lucide-react";
-import new_arrival from "../assets/new_arrival_img.DaCcndrq.svg";
+import new_arrival from "../assets/new_arrival_img.svg";
+
 const Navbar = () => {
   return (
     <div className="p-4 ">
@@ -11,13 +12,13 @@ const Navbar = () => {
         </div>
         {/* Icons */}
         <div className="flex gap-2 lg:gap-4 items-center">
-          <button className="bg-gray-100 p-2.5 lg:p-3.5 rounded-md">
+          <button className="bg-gray-100 p-2.5 lg:p-3.5 cursor-pointer rounded-md">
             <Heart className="w-3.5 h-3.5 lg:w-5 lg:h-5" />
           </button>
-          <button className="bg-gray-100 p-2.5 lg:p-3.5 rounded-md">
+          <button className="bg-gray-100 p-2.5 lg:p-3.5 cursor-pointer rounded-md">
             <UserRound className="w-3.5 h-3.5 lg:w-5 lg:h-5" />
           </button>
-          <button className="bg-gray-100 p-2.5 lg:p-3.5 rounded-md">
+          <button className="bg-gray-100 p-2.5 lg:p-3.5 cursor-pointer rounded-md">
             <ShoppingCart className="w-3.5 h-3.5 lg:w-5 lg:h-5" />
           </button>
           {/* search input on big screen*/}
