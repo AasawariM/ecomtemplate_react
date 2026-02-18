@@ -2,6 +2,7 @@ import "./App.css";
 import ColorSelector from "./components/filters/ColorSelector";
 import FilterSection from "./components/filters/FilterSection";
 import FilterSidebar from "./components/filters/FilterSidebar";
+import MobileFilterDrawer from "./components/filters/MobileFilterDrawer";
 import PriceRange from "./components/filters/PriceRange";
 import SizeSelector from "./components/filters/SizeSelector";
 import Navbar from "./components/Navbar";
@@ -13,7 +14,9 @@ function App() {
       <Navbar />
       {/* new arrivals section */}
       <div className="flex flex-col lg:flex-row">
-        {/* filter sidebar */}
+        {/* filter drawer mobile screen */}
+        <MobileFilterDrawer />
+        {/* filter sidebar lg screen*/}
         <div className="hidden lg:block">
           <div className="w-full px-4 lg:px-10">
             {/* filter Sections */}
