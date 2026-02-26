@@ -170,3 +170,34 @@ This ensures centralized control of the drawer’s visibility from the parent co
 - Spread operator creates a NEW array.
 - return [...prev, value]; means
 - Take all previously selected categories and add the newly selected one.
+
+### step 6
+
+- we added filter logic BUT Products are still not filtered.
+  - step1 - Check If Any Filter Is Selected
+    selectedCategories.length === 0
+    This checks:
+    If no checkbox is selected
+    That means selectedCategories = []
+
+  - step2 - if Length = 0 → TRUE
+    Show All Products
+    so, filteredProducts = products
+    i.e No filtering applied.
+
+  - step 3 - If FALSE → Apply Filter
+    If user selected something:
+    Example:
+    selectedCategories = ["Hoodie"]
+    Now:
+    length === 0 → FALSE
+    So it runs the part after :
+
+  - step 4 - Use .filter()
+    .filter() checks each product one by one.
+    Should I keep this product?
+    If condition is TRUE → keep it
+    If FALSE → remove it
+    it is checking for Is this product's label inside selectedCategories array?
+    i.e
+    If checkboxes are selected, show only products whose label matches selected categories.

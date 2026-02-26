@@ -67,9 +67,23 @@ function App() {
       } else {
         // add if doesnt exist
         return [...prev, value]; //Spread operator ,...prev = copy old array. , value = add new value
+        // [ copy old values , add new value ]
       }
     });
   };
+
+  // filtered products
+  //Show only products whose productLabel is selected by clicking checkbox
+  const filteredProducts =
+    // If nothing selected Show all products.Because no filter applied.
+    // If something selected Use .filter()
+    selectedCategories.length === 0
+      ? products
+      : // .filter()  creates new array and .includes() checks inside array
+        //Keep products whose label exists in selectedCategories
+        products.filter((product) =>
+          selectedCategories.includes(product.productLabel),
+        );
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -107,7 +121,7 @@ function App() {
           </div>
         </div>
         {/* products section */}
-        <ProductSection products={products} />
+        <ProductSection products={filteredProducts} />
       </div>
     </div>
   );

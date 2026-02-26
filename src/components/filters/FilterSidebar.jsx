@@ -27,7 +27,7 @@ const FilterSidebar = ({ onCategoryChange }) => {
       <FilterSection
         title="Category"
         options={[
-          { label: "Casual Tshirt", count: 353 },
+          { label: "Casual T-Shirt", count: 353 },
           { label: "Party Wear", count: 213 },
           { label: "College Wear", count: 213 },
           { label: "Hoodie", count: 213 },
