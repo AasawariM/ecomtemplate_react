@@ -127,15 +127,22 @@ This ensures centralized control of the drawer’s visibility from the parent co
 ### step 3
 
 - Connect FilterSidebar to App
-- 1. Pass a function from App → FilterSidebar
+  1. Pass a function from App → FilterSidebar
   - FilterSection must call that function on checkbox change
 
-    function logic:
+  - function logic:
     When checkbox changes:
     If value already exists in array
     remove it
     else
     add it
-
-- 2. Receive It in FilterSidebar
+  2. Receive It in FilterSidebar
   - pass it to Category section only
+
+### step 4
+
+- Modify FilterSection
+- pass prop onChange to it.
+- Now modify checkbox input
+- FilterSection calls handler function on checkbox change this
+- updates state in App -> App re-renders. BUT Products are still not filtered.
