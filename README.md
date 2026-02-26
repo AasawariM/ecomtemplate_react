@@ -146,3 +146,27 @@ This ensures centralized control of the drawer’s visibility from the parent co
 - Now modify checkbox input
 - FilterSection calls handler function on checkbox change this
 - updates state in App -> App re-renders. BUT Products are still not filtered.
+
+### step 5
+
+<!-- logic of handler added before -->
+
+- on Checkbox click
+  - “If value exists → remove it
+  - If value doesn’t exist → add it”
+
+- Suppose: selectedCategories = []
+- User clicks:checkbox Casual T-Shirt
+- handler Function runs:
+  - prev = []
+  - prev.includes("Casual T-Shirt") → false
+  - So it adds:
+  - ["Casual T-Shirt"]
+  - Now user clicks again (uncheck):
+  - prev = ["Casual T-Shirt"]
+  - prev.includes("Casual T-Shirt") → true
+  - So it removes:
+  - []
+- Spread operator creates a NEW array.
+- return [...prev, value]; means
+- Take all previously selected categories and add the newly selected one.

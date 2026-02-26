@@ -54,7 +54,22 @@ function App() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   // for categories filter as per products array filtering will be based on ProductLabel
   // handler function for category filter
-  const handleCategoryChange = () => {};
+  // value = "category label"
+  const handleCategoryChange = (value) => {
+    // latest state value at that exact moment = prev
+    // Why We Use (prev) => {} ?
+    //  Because state updates are async.
+    // React gives us previous value safely.
+    setSelectedCategories((prev) => {
+      if (prev.includes(value)) {
+        // remove if exists
+        return prev.filter((item) => item !== value); //Keep everything except the clicked value.
+      } else {
+        // add if doesnt exist
+        return [...prev, value]; //Spread operator ,...prev = copy old array. , value = add new value
+      }
+    });
+  };
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
