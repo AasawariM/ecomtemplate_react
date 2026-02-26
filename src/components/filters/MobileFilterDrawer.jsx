@@ -1,16 +1,19 @@
 import { CircleX } from "lucide-react";
 import FilterSidebar from "./FilterSidebar";
-const MobileFilterDrawer = () => {
+const MobileFilterDrawer = ({ onClose }) => {
   return (
     <div className="lg:hidden fixed z-50 inset-0">
       {/* overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div onClick={onClose} className="absolute inset-0 bg-black/65"></div>
       {/* Filter Drawer */}
       <div className="absolute top-0 left-0 w-80 max-w-[85vw] shadow-lg h-full bg-white flex flex-col">
         <div className="flex justify-between items-center p-3.5 border-b border-gray-200 bg-white sticky z-10 top-0">
           <h3 className="text-lg font-semibold">Filters</h3>
-          <button className="hover:bg-gray-100 p-1 rounded">
-            <CircleX className="w-5 h-5 cursor-pointer" />
+          <button
+            onClick={onClose}
+            className="hover:bg-gray-100 cursor-pointer p-1 rounded"
+          >
+            <CircleX className="w-5 h-5" />
           </button>
         </div>
         <div className="flex-1 overflow-y-auto pt-0 p-4">

@@ -1,5 +1,6 @@
 import { Search, Heart, UserRound, ShoppingCart } from "lucide-react";
 import new_arrival from "../assets/new_arrival_img.svg";
+import logo from "../assets/logo.svg";
 
 const Navbar = () => {
   return (
@@ -8,8 +9,11 @@ const Navbar = () => {
         {/* navbar */}
         <div className="flex justify-between items-center lg:mb-8 lg:m-4 lg:text-lg">
           {/* logo */}
-          <div className="text-4xl font-bold uppercase tracking-tighter">
+          {/* <div className="text-4xl font-bold uppercase tracking-tighter">
             Tagged<span className="text-red-500">.</span>
+          </div> */}
+          <div className="h-12 w-24 sm:h-16 sm:w-32 lg:h-10 lg:w-40 b rounded flex items-center justify-center">
+            <img src={logo} className="lg:w-auto w-24 sm:w-32"></img>
           </div>
           {/* Icons */}
           <div className="flex gap-2 lg:gap-4 items-center">
@@ -36,14 +40,14 @@ const Navbar = () => {
           </div>
         </div>
         {/* search input on small screen*/}
-        <div className="mb-4 bg-gray-100 relative flex text-center mt-6 lg:hidden rounded-md border border-gray-200">
+        <div className="mb-4 bg-gray-100 relative flex text-center mt-4 lg:hidden rounded-md border border-gray-200">
           <Search
             size={21}
             className="absolute top-1/2 -translate-y-1/2 left-1.5"
           />
           <input
             placeholder="search"
-            className="text-sm w-full bg-transparent py-2 capitalize outline-none pl-8 pr-3"
+            className="text-sm w-full bg-transparent py-2.5 capitalize outline-none pl-12 pr-3"
           />
         </div>
         <div className="border-t border-gray-300"></div>
