@@ -1,6 +1,6 @@
 import { CircleX } from "lucide-react";
 import FilterSidebar from "./FilterSidebar";
-const MobileFilterDrawer = ({ onClose }) => {
+const MobileFilterDrawer = ({ onClose, onCategoryChange }) => {
   return (
     <div className="lg:hidden fixed z-50 inset-0">
       {/* overlay */}
@@ -17,7 +17,7 @@ const MobileFilterDrawer = ({ onClose }) => {
           </button>
         </div>
         <div className="flex-1 overflow-y-auto pt-0 p-4">
-          <FilterSidebar />
+          <FilterSidebar onCategoryChange={onCategoryChange} />
         </div>
         {/*bottom buttons */}
         <div className="border-t border-gray-200 p-4 bg-white sticky bottom-0">
@@ -25,7 +25,13 @@ const MobileFilterDrawer = ({ onClose }) => {
             <button className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
               Clear All
             </button>
-            <button className="flex-1 px-4 py-2 bg-[#FF454C] text-white rounded-lg hover:bg-red-600 transition-colors">
+            <button
+              // Because filtering already happens automatically when checkbox changes.
+              // Apply button should only:
+              // Close the drawer
+              onClick={onClose}
+              className="flex-1 px-4 py-2 bg-[#FF454C] text-white rounded-lg hover:bg-red-600 transition-colors"
+            >
               Apply Filters
             </button>
           </div>

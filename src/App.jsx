@@ -140,7 +140,10 @@ function App() {
         If FALSE -> render nothing */}
         {/* We Pass a Function onClose as a Prop */}
         {showDrawer && (
-          <MobileFilterDrawer onClose={() => setShowDrawer(false)} />
+          <MobileFilterDrawer
+            onClose={() => setShowDrawer(false)}
+            onCategoryChange={handleCategoryChange}
+          />
         )}
         {/* above works as
         true  && something → show something

@@ -201,3 +201,17 @@ This ensures centralized control of the drawer’s visibility from the parent co
     it is checking for Is this product's label inside selectedCategories array?
     i.e
     If checkboxes are selected, show only products whose label matches selected categories.
+
+### Filter logic on mobile screen
+
+- Mobile drawer should behave exactly like desktop.
+  That means:
+  App
+  ↓
+  MobileFilterDrawer
+  ↓
+  FilterSidebar
+  ↓
+  FilterSection
+
+- Apply button just closes drawer
