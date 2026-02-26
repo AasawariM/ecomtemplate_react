@@ -215,3 +215,43 @@ This ensures centralized control of the drawer’s visibility from the parent co
   FilterSection
 
 - Apply button just closes drawer
+
+### Reset filters logic
+
+- step 1 : Create Reset Function in App.jsx
+- step 2 : Pass Reset to FilterSidebar
+- step 3 : Receive It in FilterSidebar
+  update the reset text button
+- step 4 : same for mobile reset
+  When user clicks Reset:
+  selectedCategories = []
+  React re-renders
+  Filter logic sees length === 0
+  All products appear
+- BUT
+- checkboxes are uncontrolled inputs right now
+- But checkbox UI is NOT connected to that state
+- So when you reset state, checkboxes may still appear checked.
+
+- to fix this we need to make them controlled inputs :
+  checked={selectedCategories.includes(item.label)}
+  1. Pass selectedCategories Down from app.jsx
+  2. Receive in FilterSidebar and pass it to Category FilterSection
+  3. Receive in FilterSection
+  4. Make Checkbox Controlled
+
+- There are two types of inputs:
+  Uncontrolled → browser manages state
+  Controlled → React manages state
+
+### **Using useReducer**
+
+- A more organized version of useState
+- Especially when state logic becomes complex.
+- To reduce this complexity and keep all your logic in one easy-to-access place,
+  you can move that state logic into a single function outside your component, called a “reducer”.
+- Reducers are a different way to handle state. You can migrate from useState to useReducer in
+  three steps:
+  1. Move from setting state to dispatching actions.
+  2. Write a reducer function.
+  3. Use the reducer from your component.

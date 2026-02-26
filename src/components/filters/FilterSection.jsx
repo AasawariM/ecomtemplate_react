@@ -1,4 +1,4 @@
-const FilterSection = ({ title, options, onChange }) => {
+const FilterSection = ({ title, options, onChange, selectedOptions = [] }) => {
   return (
     <div className="space-y-2">
       <div className="text-base lg:text-lg">{title}:</div>
@@ -25,6 +25,11 @@ const FilterSection = ({ title, options, onChange }) => {
                   // and  onChange(item.label) actually means handleCategoryChange(item.label)
                 }
               }}
+              // checked logic for filter reset with checkbox
+              // if selectedCategories = []
+              // Then: checked = false
+              //All checkboxes become unchecked automatically.
+              checked={selectedOptions.includes(item.label)}
             />
             <div className="text-sm lg:text-base">{item.label}</div>
           </div>

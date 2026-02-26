@@ -118,6 +118,12 @@ function App() {
         products.filter((product) =>
           selectedCategories.includes(product.productLabel),
         );
+  //Reset function
+  const handleResetFilters = () => {
+    setSelectedCategories([]); //reset means making array empty again
+    // state UPDATER function to change the state value i.e to change selectedCategories array
+    // so reset means selectedCategories = []
+  };
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -143,6 +149,8 @@ function App() {
           <MobileFilterDrawer
             onClose={() => setShowDrawer(false)}
             onCategoryChange={handleCategoryChange}
+            onReset={handleResetFilters}
+            selectedCategories={selectedCategories}
           />
         )}
         {/* above works as
@@ -154,7 +162,14 @@ function App() {
           <div className="w-full px-4 lg:px-10">
             {/* filter Sections */}
             {/* passing category handler function to FilterSidebar component */}
-            <FilterSidebar onCategoryChange={handleCategoryChange} />
+
+            {/* We must connect checkbox to state. 
+            i.e Checkbox checked value must depend on selectedCategories */}
+            <FilterSidebar
+              onCategoryChange={handleCategoryChange}
+              onReset={handleResetFilters}
+              selectedCategories={selectedCategories}
+            />
           </div>
         </div>
         {/* products section */}

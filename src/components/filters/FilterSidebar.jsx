@@ -3,12 +3,15 @@ import FilterSection from "./FilterSection";
 import PriceRange from "./PriceRange";
 import SizeSelector from "./SizeSelector";
 
-const FilterSidebar = ({ onCategoryChange }) => {
+const FilterSidebar = ({ onCategoryChange, onReset, selectedCategories }) => {
   return (
     <div className="pt-5">
       <div className="flex justify-between">
         <div className="text-base lg:text-lg">Filter: </div>
-        <div className="text-[#ff454c] underline underline-offset-4 cursor-pointer text-sm capitalize lg:text-base">
+        <div
+          onClick={onReset}
+          className="text-[#ff454c] underline underline-offset-4 cursor-pointer text-sm capitalize lg:text-base"
+        >
           reset all
         </div>
       </div>
@@ -34,6 +37,7 @@ const FilterSidebar = ({ onCategoryChange }) => {
           { label: "Sweat Shirts", count: 213 },
         ]}
         onChange={onCategoryChange}
+        selectedOptions={selectedCategories}
       />
       {/* Tshirt Type */}
       <FilterSection
