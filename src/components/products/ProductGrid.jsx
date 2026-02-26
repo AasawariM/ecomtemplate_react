@@ -1,36 +1,5 @@
-import gyomei from "/src/assets/gyomei.svg";
-import shadowflex from "/src/assets/shadowflex.svg";
-import skylinesteez from "/src/assets/skylinesteez.svg";
-import six_eyes_oversized_tshirt from "/src/assets/six_eyes_oversized_tshirt.svg";
-
 import ProductCard from "./ProductCard";
-const products = [
-  {
-    productName: "Six Eyes Oversized T-shirt",
-    productImage: six_eyes_oversized_tshirt,
-    productPrice: 299,
-    productLabel: "Casual T-Shirt",
-  },
-  {
-    productName: "Gyomei",
-    productImage: gyomei,
-    productPrice: 399,
-    productLabel: "College Wear",
-  },
-  {
-    productName: "skylinesteez",
-    productImage: skylinesteez,
-    productPrice: 599,
-    productLabel: "Casual T-Shirt",
-  },
-  {
-    productName: "shadowflex",
-    productImage: shadowflex,
-    productPrice: 599,
-    productLabel: "Hoodie",
-  },
-];
-const ProductGrid = () => {
+const ProductGrid = ({ products }) => {
   return (
     <div>
       <div className="px-4 lg:px-6">

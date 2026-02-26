@@ -96,3 +96,19 @@ Drawer visibility is controlled in `App.jsx` using React’s `useState`.
 This ensures centralized control of the drawer’s visibility from the parent component.
 
 ---
+
+## **Filtering Logic**
+
+### Step 1
+
+- Data should live in the highest component that needs to control it.
+- Since filters and products both affect each other,
+- their common parent (App.jsx here) must own them.
+- moved products from productGrid to app.jsx so,
+  App.jsx
+  ↓ (props)
+  ProductSection
+  ↓ (props)
+  ProductGrid
+  ↓
+  Display products

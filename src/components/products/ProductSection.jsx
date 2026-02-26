@@ -1,6 +1,6 @@
 import ProductGrid from "./ProductGrid";
 
-const ProductSection = () => {
+const ProductSection = ({ products }) => {
   return (
     <div className="flex-1">
       <div className="flex flex-col gap-4 py-4 px-4 lg:py-5 lg:pr-5 lg:flex-row lg:justify-between lg:items-center">
@@ -37,7 +37,7 @@ const ProductSection = () => {
         </div>
       </div>
       {/* product grid */}
-      <ProductGrid />
+      <ProductGrid products={products} />
     </div>
   );
 };
