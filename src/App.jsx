@@ -9,7 +9,11 @@ import gyomei from "/src/assets/gyomei.svg";
 import shadowflex from "/src/assets/shadowflex.svg";
 import skylinesteez from "/src/assets/skylinesteez.svg";
 import six_eyes_oversized_tshirt from "/src/assets/six_eyes_oversized_tshirt.svg";
-
+import men_high_neck_zipper from "./assets/men_high_neck_zipper_sweatshirt.svg";
+import berserk from "./assets/berserk.svg";
+import pastelflow from "./assets/pastelflow.svg";
+import skylinesteezback from "./assets/skylinesteezback.svg";
+import college_girl from "./assets/college_girl_design_top.svg";
 //product array
 const products = [
   {
@@ -35,6 +39,36 @@ const products = [
     productImage: shadowflex,
     productPrice: 599,
     productLabel: "Hoodie",
+  },
+  {
+    productName: "High Men Neck Zipper SweatShirt",
+    productImage: men_high_neck_zipper,
+    productPrice: 699,
+    productLabel: "Sweat Shirts",
+  },
+  {
+    productName: "skylineSteez",
+    productImage: skylinesteezback,
+    productPrice: 699,
+    productLabel: "Hoodie",
+  },
+  {
+    productName: "Berserk",
+    productImage: berserk,
+    productPrice: 899,
+    productLabel: "Party Wear",
+  },
+  {
+    productName: "College Girl Design Crop T Shirt",
+    productImage: college_girl,
+    productPrice: 999,
+    productLabel: "College Wear",
+  },
+  {
+    productName: "PastelFlow",
+    productImage: pastelflow,
+    productPrice: 1999,
+    productLabel: "College Wear",
   },
 ];
 
