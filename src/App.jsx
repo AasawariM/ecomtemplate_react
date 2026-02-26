@@ -46,6 +46,15 @@ function App() {
     setShowDrawer(!showDrawer); //toggle true/false
     // !showDrawer means showDrawer = true
   };
+
+  // Selected Filter State
+  // Because checkbox filtering allows multiple selections.
+  // These arrays will store checked checkbox values.
+  // initially empty arrays
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  // for categories filter as per products array filtering will be based on ProductLabel
+  // handler function for category filter
+  const handleCategoryChange = () => {};
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -78,7 +87,8 @@ function App() {
         <div className="hidden lg:block">
           <div className="w-full px-4 lg:px-10">
             {/* filter Sections */}
-            <FilterSidebar />
+            {/* passing category handler function to FilterSidebar component */}
+            <FilterSidebar onCategoryChange={handleCategoryChange} />
           </div>
         </div>
         {/* products section */}

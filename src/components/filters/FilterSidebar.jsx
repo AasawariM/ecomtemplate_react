@@ -3,7 +3,7 @@ import FilterSection from "./FilterSection";
 import PriceRange from "./PriceRange";
 import SizeSelector from "./SizeSelector";
 
-const FilterSidebar = () => {
+const FilterSidebar = ({ onCategoryChange }) => {
   return (
     <div className="pt-5">
       <div className="flex justify-between">
@@ -33,6 +33,7 @@ const FilterSidebar = () => {
           { label: "Hoodie", count: 213 },
           { label: "Sweat Shirts", count: 213 },
         ]}
+        onChange={onCategoryChange}
       />
       {/* Tshirt Type */}
       <FilterSection

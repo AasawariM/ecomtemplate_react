@@ -99,6 +99,8 @@ This ensures centralized control of the drawer’s visibility from the parent co
 
 ## **Filtering Logic**
 
+**Category filter using productLabel**
+
 ### Step 1
 
 - Data should live in the highest component that needs to control it.
@@ -112,3 +114,28 @@ This ensures centralized control of the drawer’s visibility from the parent co
   ProductGrid
   ↓
   Display products
+
+### step 2
+
+- Create filter state in App.jsx
+- Because user can select:
+  One checkbox
+  Multiple checkboxes
+  Or none
+- we need empty arrays to store Selected Filter State.
+
+### step 3
+
+- Connect FilterSidebar to App
+- 1. Pass a function from App → FilterSidebar
+  - FilterSection must call that function on checkbox change
+
+    function logic:
+    When checkbox changes:
+    If value already exists in array
+    remove it
+    else
+    add it
+
+- 2. Receive It in FilterSidebar
+  - pass it to Category section only
