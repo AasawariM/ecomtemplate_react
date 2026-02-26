@@ -6,44 +6,93 @@
 - Tailwind CSS
 - Vite
 
+---
+
 ## Components
 
 ### Responsive Navbar Component
 
-A React navbar component with a logo, search bar, and action icons.
+A responsive React navbar that includes:
 
-### Filter Sidebar Component
+- Logo
+- Search bar
+- Action icons (e.g., cart, profile)
 
-A React sidebar component for filtering items with multiple sections. Each section displays a title, checkboxes, and counts.
+The layout adjusts based on screen size for better user experience across devices.
 
-#### Components
+---
 
-**FilterSidebar**
+## Filter Sidebar Component (Desktop)
 
-- Wrapper component for all filter sections.
-- Renders multiple `FilterSection` components:
+A sidebar component used for filtering products. It contains multiple filter sections, each displaying a title, checkboxes, and item counts.
+
+### FilterSidebar
+
+- Acts as the wrapper component for all filter sections.
+- Renders multiple `FilterSection` components, including:
   - Department
   - Category
   - Tshirt Type
   - Cloth Type
 
-**FilterSection**
+- Also integrates:
+  - ColorSelector
+  - SizeSelector
+
+---
+
+### FilterSection
+
+A reusable component that:
 
 - Accepts props:
-  - `title` – Section title
-  - `options` – Array of objects with `{ label, count }`
+  - `title` – Section heading
+  - `options` – Array of objects containing `{ label, count }`
 
 - Renders:
   - Section title
-  - Checkboxes for each option with count
-  - Divider line after options
+  - List of checkboxes with counts
+  - Divider line after each section
 
-**ColorSelector**
+---
 
-- Allows users to pick a color for products.
-- Uses the map() method to dynamically render a list of color options from an array
+### ColorSelector
 
-**Size Selector**
+- Allows users to select a product color.
+- Dynamically renders color options using the `map()` method.
 
-- Allows users to pick a size for products.
-- Uses the map() method to dynamically render available sizes (S, M, L, XL, XXL) from an array
+---
+
+### SizeSelector
+
+- Allows users to select a product size.
+- Dynamically renders available sizes (S, M, L, XL, XXL) using the `map()` method.
+
+---
+
+## Mobile Filter Drawer Component
+
+### MobileFilterDrawer
+
+A slide-in drawer component designed for small screens.
+
+### Features:
+
+- Appears when the user clicks the filter button on mobile view.
+- Includes:
+  - Overlay background
+  - Close button
+  - Scrollable filter content
+  - Clear All and Apply Filters buttons
+
+### State Management
+
+Drawer visibility is controlled in `App.jsx` using React’s `useState`.
+
+- Initially hidden
+- Opens when the mobile filter button is clicked
+- Closes when the overlay or close button is clicked
+
+This ensures centralized control of the drawer’s visibility from the parent component.
+
+---
