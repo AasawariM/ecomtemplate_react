@@ -79,7 +79,7 @@ const FilterSidebar = ({
       />
       {/* colors */}
       <ColorSelector
-        selectedOptions={filters.color}
+        selectedOptions={filters.color} //gets selected color from App
         onChange={(value) => handleFilterChange("color", value)}
       />
       {/* price */}

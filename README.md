@@ -300,7 +300,27 @@ This ensures centralized control of the drawer’s visibility from the parent co
   If "M" is selected:
   It gets highlighted.
 
+### Color Selector filtering logic
+
+- flow
+  User clicks black circle
+  → "Black" saved in filters
+  → products.filter runs
+  → only products with color: "Black" stay
+  → circle gets ring highlight
+
+- Example
+  When user clicks black:
+  onChange("Black")
+  So:
+  filters.color = ["Black"]
+  Your product:
+  color: "Black"
+  Now this matches:
+  filters.color.includes(product.color)
+
   <!-- ### **Using useReducer**
+
 
 - A more organized version of useState
 - Especially when state logic becomes complex.
