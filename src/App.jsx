@@ -21,54 +21,99 @@ const products = [
     productImage: six_eyes_oversized_tshirt,
     productPrice: 299,
     productLabel: "Casual T-Shirt",
+    department: "Mens",
+    tshirtType: "Regular Fit",
+    clothType: "Cotton",
+    sizes: ["M", "L", "XL", "XXL"],
+    color: "White",
   },
   {
     productName: "Gyomei",
     productImage: gyomei,
     productPrice: 399,
     productLabel: "College Wear",
+    department: "Mens",
+    tshirtType: "Oversized Fit",
+    clothType: "French Teri cotton",
+    sizes: ["S", "L", "XXL"],
+    color: "Yellow",
   },
   {
     productName: "skylinesteez",
     productImage: skylinesteez,
     productPrice: 599,
     productLabel: "Casual T-Shirt",
+    department: "Mens",
+    tshirtType: "Regular Fit",
+    clothType: "Cotton",
+    sizes: ["S", "XL", "L"],
+    color: "Black",
   },
   {
     productName: "shadowflex",
     productImage: shadowflex,
     productPrice: 599,
     productLabel: "Hoodie",
+    department: "Mens",
+    tshirtType: "Oversized Fit",
+    clothType: "Cotton Blend",
+    sizes: ["S", "M", "XXL"],
+    color: "Blue",
   },
   {
     productName: "High Men Neck Zipper SweatShirt",
     productImage: men_high_neck_zipper,
     productPrice: 699,
     productLabel: "Sweat Shirts",
+    department: "Mens",
+    tshirtType: "Regular Fit",
+    clothType: "Cotton Blend",
+    sizes: ["M", "L", "XL"],
+    color: "Green",
   },
   {
     productName: "skylineSteez",
     productImage: skylinesteezback,
     productPrice: 699,
     productLabel: "Hoodie",
+    department: "Womens",
+    tshirtType: "Oversized Fit",
+    clothType: "Cotton Blend",
+    sizes: ["S", "M", "XL"],
+    color: "Black",
   },
   {
     productName: "Berserk",
     productImage: berserk,
     productPrice: 899,
     productLabel: "Party Wear",
+    department: "Mens",
+    tshirtType: "Regular Fit",
+    clothType: "Kente Wear",
+    sizes: ["S", "M", "L"],
+    color: "Grey",
   },
   {
     productName: "College Girl Design Crop T Shirt",
     productImage: college_girl,
     productPrice: 999,
     productLabel: "College Wear",
+    department: "Womens",
+    tshirtType: "Oversized Fit",
+    clothType: "Cotton",
+    sizes: ["S", "L", "XL"],
+    color: "White",
   },
   {
     productName: "PastelFlow",
     productImage: pastelflow,
     productPrice: 1999,
     productLabel: "College Wear",
+    department: "Mens",
+    tshirtType: "Oversized Fit",
+    clothType: "Polyster",
+    sizes: ["S", "M", "XL"],
+    color: "Green",
   },
 ];
 
@@ -108,22 +153,108 @@ function App() {
 
   // filtered products
   //Show only products whose productLabel is selected by clicking checkbox
-  const filteredProducts =
-    // If nothing selected Show all products.Because no filter applied.
-    // If something selected Use .filter()
-    selectedCategories.length === 0
-      ? products
-      : // .filter()  creates new array and .includes() checks inside array
-        //Keep products whose label exists in selectedCategories
-        products.filter((product) =>
-          selectedCategories.includes(product.productLabel),
-        );
+  // (filter is empty) OR (product matches filter)
+  // Product must satisfy ALL active filters.
+  // const filteredProducts =
+  //   // If nothing selected Show all products.Because no filter applied.
+  //   // If something selected Use .filter()
+  //   selectedCategories.length === 0
+  //     ? products
+  //     : // .filter()  creates new array and .includes() checks inside array
+  //       //Keep products whose label exists in selectedCategories
+  //       products.filter((product) =>
+  //         selectedCategories.includes(product.productLabel),
+  //       );
+
   //Reset function
   const handleResetFilters = () => {
     setSelectedCategories([]); //reset means making array empty again
     // state UPDATER function to change the state value i.e to change selectedCategories array
     // so reset means selectedCategories = []
+    // aftering adding all fliters logic resetting them
+    setFilters({
+      department: [],
+      tshirtType: [],
+      clothType: [],
+      sizes: [],
+      color: [],
+    });
   };
+
+  // for all other filters we create a single state with one object
+  // Instead of writing 5 different functions,
+  // you created one universal function.
+  const [filters, setFilters] = useState({
+    department: [],
+    tshirtType: [],
+    clothType: [],
+    sizes: [],
+    color: [],
+  });
+
+  // updated filteredProducts logic for all filters
+  // Combined filter logic (category + all other filters)
+  const filteredProducts = products.filter((product) => {
+    const categoryMatch =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(product.productLabel);
+
+    const departmentMatch =
+      filters.department.length === 0 ||
+      filters.department.includes(product.department);
+
+    const tshirtTypeMatch =
+      filters.tshirtType.length === 0 ||
+      filters.tshirtType.includes(product.tshirtType);
+
+    const clothTypeMatch =
+      filters.clothType.length === 0 ||
+      filters.clothType.includes(product.clothType);
+
+    // Since each product now has multiple sizes, you must check if:
+    // At least one selected size exists inside product.sizes array
+    // const sizeMatch =
+    //   filters.size.length === 0 || filters.size.includes(product.size);
+    const sizeMatch =
+      filters.sizes.length === 0 ||
+      filters.sizes.some((selectedSize) =>
+        product.sizes.includes(selectedSize),
+      );
+
+    const colorMatch =
+      filters.color.length === 0 || filters.color.includes(product.color);
+
+    // Product must satisfy ALL active filters
+    return (
+      categoryMatch &&
+      departmentMatch &&
+      tshirtTypeMatch &&
+      clothTypeMatch &&
+      sizeMatch &&
+      colorMatch
+    );
+  });
+  // handler logic
+  // filterType → which filter to update and value → what was clicked
+  const handleFilterChange = (filterType, value) => {
+    //prev = current filters object
+    setFilters((prev) => {
+      // Get Current Filter Array
+      const currentValues = prev[filterType];
+      // Toggle Logic
+      const updatedValues = currentValues.includes(value)
+        ? currentValues.filter((item) => item !== value)
+        : [...currentValues, value];
+
+      // Return Updated Filters Object
+      return {
+        ...prev,
+        // [] means: Use variable value as key.
+        [filterType]: updatedValues,
+      };
+    });
+  };
+
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -151,6 +282,8 @@ function App() {
             onCategoryChange={handleCategoryChange}
             onReset={handleResetFilters}
             selectedCategories={selectedCategories}
+            handleFilterChange={handleFilterChange}
+            filters={filters}
           />
         )}
         {/* above works as
@@ -169,6 +302,8 @@ function App() {
               onCategoryChange={handleCategoryChange}
               onReset={handleResetFilters}
               selectedCategories={selectedCategories}
+              handleFilterChange={handleFilterChange}
+              filters={filters}
             />
           </div>
         </div>

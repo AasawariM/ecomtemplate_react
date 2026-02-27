@@ -3,7 +3,13 @@ import FilterSection from "./FilterSection";
 import PriceRange from "./PriceRange";
 import SizeSelector from "./SizeSelector";
 
-const FilterSidebar = ({ onCategoryChange, onReset, selectedCategories }) => {
+const FilterSidebar = ({
+  onCategoryChange,
+  onReset,
+  selectedCategories,
+  handleFilterChange,
+  filters,
+}) => {
   return (
     <div className="pt-5">
       <div className="flex justify-between">
@@ -25,6 +31,8 @@ const FilterSidebar = ({ onCategoryChange, onReset, selectedCategories }) => {
           { label: "Mens", count: 213 },
           { label: "Womens", count: 353 },
         ]}
+        selectedOptions={filters.department}
+        onChange={(value) => handleFilterChange("department", value)}
       />
       {/* Category */}
       <FilterSection
@@ -46,6 +54,8 @@ const FilterSidebar = ({ onCategoryChange, onReset, selectedCategories }) => {
           { label: "Regular Fit", count: 213 },
           { label: "Oversized Fit", count: 353 },
         ]}
+        selectedOptions={filters.tshirtType}
+        onChange={(value) => handleFilterChange("tshirtType", value)}
       />
       {/* Cloth Type */}
       <FilterSection
@@ -57,11 +67,21 @@ const FilterSidebar = ({ onCategoryChange, onReset, selectedCategories }) => {
           { label: "French Teri cotton", count: 353 },
           { label: "Kente Wear", count: 353 },
         ]}
+        selectedOptions={filters.clothType}
+        onChange={(value) => handleFilterChange("clothType", value)}
       />
       {/* Sizes */}
-      <SizeSelector />
+      <SizeSelector
+        selectedOptions={filters.sizes}
+        onChange={(value) => {
+          handleFilterChange("sizes", value);
+        }}
+      />
       {/* colors */}
-      <ColorSelector />
+      <ColorSelector
+        selectedOptions={filters.color}
+        onChange={(value) => handleFilterChange("color", value)}
+      />
       {/* price */}
       <PriceRange />
     </div>

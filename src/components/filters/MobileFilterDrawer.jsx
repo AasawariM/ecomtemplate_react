@@ -5,6 +5,8 @@ const MobileFilterDrawer = ({
   onCategoryChange,
   onReset,
   selectedCategories,
+  handleFilterChange,
+  filters,
 }) => {
   return (
     <div className="lg:hidden fixed z-50 inset-0">
@@ -26,6 +28,8 @@ const MobileFilterDrawer = ({
             onReset={onReset}
             onCategoryChange={onCategoryChange}
             selectedCategories={selectedCategories}
+            handleFilterChange={handleFilterChange}
+            filters={filters}
           />
         </div>
         {/*bottom buttons */}

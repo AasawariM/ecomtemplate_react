@@ -244,7 +244,25 @@ This ensures centralized control of the drawer’s visibility from the parent co
   Uncontrolled → browser manages state
   Controlled → React manages state
 
-### **Using useReducer**
+### Filtering Logic for other conditions
+
+- using combined logic by creating a single state with only one object.
+- Universal Filter Handler
+- Example:
+  User clicks:
+  handleFilterChange("sizes", "M")
+  1. prev = current filters
+  2. currentValues = prev["sizes"]
+  3. Check if "M" exists
+  4. Add or remove
+  5. Return new filters object
+  6. React re-renders
+- connect inside filterSizebar
+- update filteredProducts array logic and also reset logic fixed
+- same for mobile drawer
+
+<!-- ### **Using useReducer**
+
 
 - A more organized version of useState
 - Especially when state logic becomes complex.
@@ -254,4 +272,4 @@ This ensures centralized control of the drawer’s visibility from the parent co
   three steps:
   1. Move from setting state to dispatching actions.
   2. Write a reducer function.
-  3. Use the reducer from your component.
+  3. Use the reducer from your component. -->
