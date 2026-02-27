@@ -178,6 +178,10 @@ function App() {
       clothType: [],
       sizes: [],
       color: [],
+      price: {
+        min: 0,
+        max: 2000,
+      },
     });
   };
 
@@ -190,6 +194,11 @@ function App() {
     clothType: [],
     sizes: [],
     color: [],
+    // Add Price to Filters State
+    price: {
+      min: 0,
+      max: 2000,
+    },
   });
 
   // updated filteredProducts logic for all filters
@@ -224,6 +233,12 @@ function App() {
     const colorMatch =
       filters.color.length === 0 || filters.color.includes(product.color);
 
+    // Add Price Filtering Logic
+    // Only show products whose price is between min and max.
+    const priceMatch =
+      product.productPrice >= filters.price.min &&
+      product.productPrice <= filters.price.max;
+
     // Product must satisfy ALL active filters
     return (
       categoryMatch &&
@@ -231,7 +246,8 @@ function App() {
       tshirtTypeMatch &&
       clothTypeMatch &&
       sizeMatch &&
-      colorMatch
+      colorMatch &&
+      priceMatch
     );
   });
   // handler logic
@@ -255,6 +271,19 @@ function App() {
     });
   };
 
+  // price range handler function
+  //type = "min" or "max"
+  //value = number from input
+  const handlePriceChange = (type, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      price: {
+        ...prev.price,
+        // string into a number as input gives strings
+        [type]: Number(value),
+      },
+    }));
+  };
   return (
     <div className="bg-white min-h-screen">
       <Navbar />
@@ -284,6 +313,7 @@ function App() {
             selectedCategories={selectedCategories}
             handleFilterChange={handleFilterChange}
             filters={filters}
+            handlePriceChange={handlePriceChange}
           />
         )}
         {/* above works as
@@ -304,6 +334,7 @@ function App() {
               selectedCategories={selectedCategories}
               handleFilterChange={handleFilterChange}
               filters={filters}
+              handlePriceChange={handlePriceChange}
             />
           </div>
         </div>

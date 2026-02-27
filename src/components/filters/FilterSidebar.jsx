@@ -9,6 +9,7 @@ const FilterSidebar = ({
   selectedCategories,
   handleFilterChange,
   filters,
+  handlePriceChange,
 }) => {
   return (
     <div className="pt-5">
@@ -83,7 +84,7 @@ const FilterSidebar = ({
         onChange={(value) => handleFilterChange("color", value)}
       />
       {/* price */}
-      <PriceRange />
+      <PriceRange price={filters.price} handlePriceChange={handlePriceChange} />
     </div>
   );
 };

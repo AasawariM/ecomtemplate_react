@@ -127,7 +127,7 @@ This ensures centralized control of the drawer’s visibility from the parent co
 ### step 3
 
 - Connect FilterSidebar to App
-  1. Pass a function from App → FilterSidebar
+  1. Pass a function from App => FilterSidebar
   - FilterSection must call that function on checkbox change
 
   - function logic:
@@ -152,19 +152,19 @@ This ensures centralized control of the drawer’s visibility from the parent co
 <!-- logic of handler added before -->
 
 - on Checkbox click
-  - “If value exists → remove it
-  - If value doesn’t exist → add it”
+  - “If value exists => remove it
+  - If value doesn’t exist => add it”
 
 - Suppose: selectedCategories = []
 - User clicks:checkbox Casual T-Shirt
 - handler Function runs:
   - prev = []
-  - prev.includes("Casual T-Shirt") → false
+  - prev.includes("Casual T-Shirt") => false
   - So it adds:
   - ["Casual T-Shirt"]
   - Now user clicks again (uncheck):
   - prev = ["Casual T-Shirt"]
-  - prev.includes("Casual T-Shirt") → true
+  - prev.includes("Casual T-Shirt") => true
   - So it removes:
   - []
 - Spread operator creates a NEW array.
@@ -180,24 +180,24 @@ This ensures centralized control of the drawer’s visibility from the parent co
     If no checkbox is selected
     That means selectedCategories = []
 
-  - step2 - if Length = 0 → TRUE
+  - step2 - if Length = 0 => TRUE
     Show All Products
     so, filteredProducts = products
     i.e No filtering applied.
 
-  - step 3 - If FALSE → Apply Filter
+  - step 3 - If FALSE => Apply Filter
     If user selected something:
     Example:
     selectedCategories = ["Hoodie"]
     Now:
-    length === 0 → FALSE
+    length === 0 => FALSE
     So it runs the part after :
 
   - step 4 - Use .filter()
     .filter() checks each product one by one.
     Should I keep this product?
-    If condition is TRUE → keep it
-    If FALSE → remove it
+    If condition is TRUE => keep it
+    If FALSE => remove it
     it is checking for Is this product's label inside selectedCategories array?
     i.e
     If checkboxes are selected, show only products whose label matches selected categories.
@@ -241,8 +241,8 @@ This ensures centralized control of the drawer’s visibility from the parent co
   4. Make Checkbox Controlled
 
 - There are two types of inputs:
-  Uncontrolled → browser manages state
-  Controlled → React manages state
+  Uncontrolled => browser manages state
+  Controlled => React manages state
 
 ### Filtering Logic for other conditions
 
@@ -283,8 +283,8 @@ This ensures centralized control of the drawer’s visibility from the parent co
   React re-runs this:
 - const filteredProducts = products.filter(...)
 - Size Matching Logic Runs:
-  If no size selected → show all products
-  If size selected → check:
+  If no size selected => show all products
+  If size selected => check:
   Does product.sizes contain any selected size?
   Example:
   filters.sizes = ["M"]
@@ -304,10 +304,10 @@ This ensures centralized control of the drawer’s visibility from the parent co
 
 - flow
   User clicks black circle
-  → "Black" saved in filters
-  → products.filter runs
-  → only products with color: "Black" stay
-  → circle gets ring highlight
+  => "Black" saved in filters
+  => products.filter runs
+  => only products with color: "Black" stay
+  => circle gets ring highlight
 
 - Example
   When user clicks black:
@@ -318,6 +318,22 @@ This ensures centralized control of the drawer’s visibility from the parent co
   color: "Black"
   Now this matches:
   filters.color.includes(product.color)
+
+### Price Range Filter Logic
+
+- Add Price to Filters State
+- Update Reset Function
+- Add Price Filtering Logic and add it to Return inside filteredProducts
+- Create Price Change Handler
+- Pass to Sidebar also from mobile drawer
+- Update PriceRange Component
+
+User changes slider
+=> onPriceChange("max", value)
+=> filters.price updated
+=> App re-renders
+=> filteredProducts runs
+=> Only products inside price range remain
 
   <!-- ### **Using useReducer**
 

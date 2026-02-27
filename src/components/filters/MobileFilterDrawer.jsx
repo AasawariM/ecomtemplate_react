@@ -7,6 +7,7 @@ const MobileFilterDrawer = ({
   selectedCategories,
   handleFilterChange,
   filters,
+  handlePriceChange,
 }) => {
   return (
     <div className="lg:hidden fixed z-50 inset-0">
@@ -30,6 +31,7 @@ const MobileFilterDrawer = ({
             selectedCategories={selectedCategories}
             handleFilterChange={handleFilterChange}
             filters={filters}
+            handlePriceChange={handlePriceChange}
           />
         </div>
         {/*bottom buttons */}
