@@ -261,8 +261,46 @@ This ensures centralized control of the drawer’s visibility from the parent co
 - update filteredProducts array logic and also reset logic fixed
 - same for mobile drawer
 
-<!-- ### **Using useReducer**
+### Size Selector filtering logic
 
+- User Clicks a Size
+- Inside SizeSelector:
+  onClick={() => onChange(size)}
+- If user clicks:"M"
+- This runs:handleFilterChange("sizes", "M")
+- App Receives It and runs handleFilterChange logic
+  If "M" was not selected before:
+  filters.sizes = []
+  It becomes:
+  filters.sizes = ["M"]
+  If clicked again:
+  filters.sizes = []
+- This is how toggle logic works.
+
+- React Re-renders App
+  Because state changed:
+- filters updated
+  React re-runs this:
+- const filteredProducts = products.filter(...)
+- Size Matching Logic Runs:
+  If no size selected → show all products
+  If size selected → check:
+  Does product.sizes contain any selected size?
+  Example:
+  filters.sizes = ["M"]
+  product.sizes = ["S", "M", "L"]
+  .some() returns TRUE
+  Product stays.
+
+- UI Updates Automatically
+  Because SizeSelector receives:
+  selectedOptions={filters.sizes}
+  Inside it:
+  const isSelected = selectedOptions.includes(size);
+  If "M" is selected:
+  It gets highlighted.
+
+  <!-- ### **Using useReducer**
 
 - A more organized version of useState
 - Especially when state logic becomes complex.

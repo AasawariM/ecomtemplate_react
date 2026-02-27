@@ -72,7 +72,7 @@ const FilterSidebar = ({
       />
       {/* Sizes */}
       <SizeSelector
-        selectedOptions={filters.sizes}
+        selectedOptions={filters.sizes} //Gets selected sizes from App
         onChange={(value) => {
           handleFilterChange("sizes", value);
         }}
